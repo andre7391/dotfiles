@@ -5,7 +5,7 @@
 . shared/scripts/arch.sh
 
 
-banner "Common Modules"
+banner "Shared Modules"
 dots shared/kitty
 dots shared/picom
 dots shared/bspwm
@@ -17,7 +17,10 @@ dots shared/zsh
 
 
 banner "Appearance and Theming"
-dots shared/appearance
+dots shared/fonts
+dots shared/wallpapers
+dots shared/wallust
+dots shared/gtk
 
 
 banner "Zeus"

@@ -4,5 +4,5 @@
 dir=$(dirname ${BASH_SOURCE[0]})
 
 # wallpapers
-symlink $dir/images ~/.config/wallpapers
+symlink $dir/wallhaven ~/.config/wallpapers
 

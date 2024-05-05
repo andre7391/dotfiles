@@ -11,7 +11,6 @@ symlink $dir/dejavu-sans ~/.local/share/fonts/dejavu-sans
 symlink $dir/nerdfonts ~/.local/share/fonts/nerdfonts
 symlink $dir/roboto ~/.local/share/fonts/roboto
 symlink $dir/ubuntu ~/.local/share/fonts/ubuntu
-symlink $dir/iosevka ~/.local/share/fonts/iosevka
 
 # compare md5sum to check if the fonts changed
 touch ~/.local/share/fonts-md5sum
