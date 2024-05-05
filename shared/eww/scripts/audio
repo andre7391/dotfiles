@@ -1,0 +1,150 @@
+#!/bin/bash
+
+# output operations
+get_output_volume() {
+    mute=$(get_output_mute)
+    if [ $mute = "yes" ] ; then 
+        echo "mute"
+    else
+        pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1{print $5}' | tr -d '%'
+    fi
+}
+
+get_output_mute() {
+    pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'
+}
+
+get_output_icon() {
+    mute=$(get_output_mute)
+    volume=$(get_output_volume)
+    if [ $mute = "yes" ]; then 
+        echo "󰝟"
+    elif ((volume > 66)); then 
+        echo ""
+    elif ((volume > 33)); then 
+        echo ""
+    else
+        echo ""
+    fi
+}
+
+set_output_volume() {
+    # unmute
+    mute=$(get_output_mute)
+    if [ $mute = "yes" ]; then 
+        toggle_output_mute
+    fi
+
+    # calculate volume
+    volume=$(get_output_volume)
+    if [ $1 = "up" ]; then 
+        volume=$((volume + 5))
+        if ((volume >= 140)); then 
+            volume=140
+        fi
+    else 
+        volume=$((volume - 5))
+        if ((volume <= 0)); then 
+            volume=0
+        fi
+    fi
+
+    pactl set-sink-volume @DEFAULT_SINK@ $volume%
+}
+
+toggle_output_mute() {
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+}
+
+subscribe_output_icon() {
+    get_output_icon
+    pactl subscribe | grep --line-buffered "sink" | while read -r line; do
+        get_output_icon
+    done 
+}
+
+subscribe_output_volume() {
+    get_output_volume
+    pactl subscribe | grep --line-buffered "sink" | while read -r line; do
+        get_output_volume
+    done 
+}
+
+
+
+# input operations
+get_input_mute() {
+    pactl get-source-mute @DEFAULT_SOURCE@ | awk '{print $2}'
+}
+
+get_input_volume() {
+    mute=$(get_input_mute)
+    if [ $mute = "yes" ]; then 
+        echo "mute"
+    else
+        pactl get-source-volume @DEFAULT_SOURCE@ | awk 'NR==1{print $5}' | tr -d '%'
+    fi
+}
+
+get_input_icon() {
+    mute=$(get_input_mute)
+    volume=$(get_input_volume)
+    if [ $mute = "yes" ]; then 
+        echo "󰍭"
+    else
+        echo "󰍮"
+    fi
+}
+
+set_input_volume() {
+
+    # unmute
+    mute=$(get_input_mute)
+    if [ $mute = "yes" ]; then 
+        toggle_input_mute
+    fi
+
+    # calculate volume
+    volume=$(get_input_volume)
+    if [ $1 = "up" ]; then 
+        volume=$((volume + 5))
+        if ((volume >= 100)); then 
+            volume=100
+        fi
+    else 
+        volume=$((volume - 5))
+        if ((volume <= 0)); then 
+            volume=0
+        fi
+    fi
+
+    pactl set-source-volume @DEFAULT_SOURCE@ $volume%
+}
+
+toggle_input_mute() {
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+}
+
+subscribe_input_icon() {
+    get_input_icon
+    pactl subscribe | grep --line-buffered "source" | while read -r line; do
+        get_input_icon
+    done 
+}
+
+subscribe_input_volume() {
+    get_input_volume
+    pactl subscribe | grep --line-buffered "source" | while read -r line; do
+        get_input_volume
+    done 
+}
+
+
+
+# execute a function passsed as argument (ex: audio get_output_volume)
+"$@"
+
+
+
+
+

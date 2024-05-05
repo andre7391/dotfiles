@@ -1,0 +1,82 @@
+
+;; import default config
+(include "default.yuck")
+
+;; bar-window
+(defwindow bar-window
+  ; :monitor "<primary>"
+  :stacking "bg"
+  :windowtype "dock"
+  ; :focusable false 
+  ; :exclusive true 
+  ; :wm-ignore false
+  :geometry (geometry
+    :width "100%"
+    :anchor "center top"
+  )
+  (bar)
+)
+
+;; bar
+(defwidget bar []
+  (box
+    :class "bar"
+    (start)
+    (end)
+  )
+)
+
+;; end
+(defwidget end []
+  (box
+    :halign "end"
+    :space-evenly false
+    
+    (separator)      
+    (wifi)
+
+    (separator)
+    (audio)
+      
+    (separator)
+    (date)
+    
+    (spacer)(spacer)(spacer)
+  )
+)
+
+;; start
+(defwidget start []
+  (box
+    :halign "start"
+    :space-evenly false
+    
+    (spacer)(spacer)(spacer)
+    (power 
+      :icon "󰣇"
+    )
+    
+    (separator)
+    (cpu_usage)
+    
+    (separator)
+    (cpu_temperature :param "K10TEMP_TCTL") ; CORETEMP_PACKAGE_ID_0
+    
+    (separator)
+    (memory_usage)
+    
+    (separator)
+    (disk_usage)
+    
+    (separator)
+    (network_usage :param "wlan0") ; wlp2s0    (separator)
+    
+    (separator)
+    (layout)
+    
+    (separator)
+    (workspaces)
+
+    (separator)
+  )
+)

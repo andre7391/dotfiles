@@ -1,0 +1,1 @@
+SUBSYSTEM=="power_supply", ACTION=="change", ATTR{model_name}=="G603 Wireless Gaming Mouse", RUN+="/home/andre/.local/bin/mouse.sh"

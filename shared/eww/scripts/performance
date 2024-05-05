@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# operations
+memory_usage() {
+   # free | awk 'NR==2 {print int(100-($7/$2*100))}'
+   free -m | awk 'NR==2 {printf "%.1fG/%.1fG", ($2-$7)/1024, ($2/1024)}'
+}
+
+cpu_usage() {
+    mpstat | awk 'NR==4 { print int($3) }'
+    mpstat 1 | ( 
+        while read line ; do
+            if [[ "$line" == *"all"* ]] then
+                echo $line | awk '{ print int($4) }'
+            fi
+        done
+    )
+}
+
+cpu_usage() {
+    mpstat | awk 'NR==4 { print int($3) }'
+    mpstat 1 | ( 
+        while read line ; do
+            if [[ "$line" == *"all"* ]] then
+                echo $line | awk '{ print int($4) }'
+            fi
+        done
+    )
+}
+
+cpu_temperature() {
+    sensors | grep Tdie | awk '{print int($2)}'
+}
+
+disk_usage() {
+   df /dev/sda2 | awk 'NR==2 {printf "%.1fG/%.1fG", (($2-$4)/1024/1024), ($2/1024/1024)}'
+}
+
+# execute a function passsed as argument (ex: audio get_output_volume)
+"$@"
+
+
+
+
+

@@ -1,0 +1,96 @@
+@import "../../.cache/wallust/colors-eww.scss";
+
+
+// colors
+$transparency: rgba(0,0,0,0);
+$foreground: #A9B1D6;
+
+
+// global
+$spacing: 8px;
+$gap: 4px;
+$radius: 8px;
+$height: 24px;
+
+* {
+  all: unset;
+  font-family: "UbuntuMono Nerd Font Mono";
+  font-size: 14px;
+  // font-weight: 500;
+  color: $color15;
+}
+
+// bar
+.bar {
+  background-color: $background;
+  margin: $gap $gap 0px $gap;
+  min-height: $height;
+
+  border-color: $color15;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: $radius;
+}
+
+// icon
+.icon {
+  font-size: 12px;
+  font-family: "Symbols Nerd Font Mono";
+}
+
+// separetor
+.separator {
+  font-weight: bold;
+  padding: 0px $spacing 0px $spacing;
+}
+
+// spacer
+.spacer {
+  font-weight: bold;
+  padding-left: $spacing / 2;
+}
+
+// workspaces
+.workspaces {
+  min-height: $height;
+}
+
+.workspace {
+  padding: 0px 4px;
+  margin: 4px 2px;
+
+  border-radius: 2px;
+
+  background-color: $color8;
+  color: $color0;
+}
+
+.workspace.focused {
+  background-color: $color13;
+}
+
+.workspace.urgent {
+  background-color: $color2;
+}
+
+.workspace.first {
+  margin-left: 0;
+}
+
+.workspace.last {
+  margin-right: 0;
+}
+
+.layout {
+  padding: 0px 4px;
+  margin: 4px 0px;
+
+  border-radius: 2px;
+
+  background-color: $color8;
+  color: $color0;
+}
+
+.layout.Monocle {
+  background-color: $color13;
+}

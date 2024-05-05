@@ -1,0 +1,68 @@
+/* theme. */
+@import "~/.cache/wallust/colors-rofi"
+
+configuration {
+    disable-history: false;
+}
+
+* {
+    font: "UbuntuMono Nerd Font Mono 12";
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    accent-color: @color13;
+}
+
+window {
+    background-color: @background;
+    border: 2;
+    border-color: @foreground;
+    padding: 15;
+    border-radius: 15;
+}
+
+mainbox {
+
+}
+
+inputbar {
+    children: [ prompt, entry, num-filtered-rows, textbox-num-sep, num-rows ];
+}
+
+prompt {
+    margin: 0 10 0 0;
+    text-color: @accent-color;
+}
+
+entry {
+    placeholder: "";
+    text-color: @foreground;
+}
+
+num-filtered-rows, textbox-num-sep, num-rows {
+    text-color: @foreground;
+}
+
+listview {
+    fixed-height: 0;
+    scrollbar: false;
+    border-color: @accent-color;
+    padding: 10 0 0 0;
+    margin: 10 0 0 0;
+}
+
+element {
+    border:  0;
+    padding: 4;
+    border-radius: 4;
+}
+
+element.normal.normal, element.alternate.normal, element.normal.active, element.alternate.active {
+    text-color: @foreground;
+    background-color: transparent;
+}
+
+element.selected.normal, element.selected.active {
+    background-color: @accent-color;
+    text-color: @background;
+}
