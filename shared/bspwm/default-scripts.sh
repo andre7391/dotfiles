@@ -27,17 +27,6 @@ bspwm_picom() {
 }
 
 ########################################
-# Run pywal
-#
-# Arguments:
-#   None
-######################################## 
-bspwm_pywal() {
-    # update theme
-    wal --saturate 0.7 -ste --iterative -a 80 -i ~/.config/wallpapers
-}
-
-########################################
 # Change pywal theme based on wallpaper
 #
 # Arguments:

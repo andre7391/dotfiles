@@ -71,13 +71,10 @@ symlink() {
         return 1
     fi
 
-    # if  [[ -d $1 ]] ; then
-    #     find $1 -type f | xargs -L 1 -I file symlink "aa bfile"
-    #     files=$(find $1 -type f )
-    #     # for i in $(find . -name \*.txt); do 
-    #     #     process "$i"
-    #     # done
-    # fi
+    # stop if symlink already exists
+    if [[ -e $2 && $(readlink -f $2) == $(realpath -s $1) ]] ; then
+        return 0
+    fi 
 
     # create destiny folder
     mkdir -p $2 2> /dev/null
@@ -104,7 +101,6 @@ copy_to_root() {
         sudo chown -R root:root $2
         log_info "file copied from ${cyan}[$1]${normal} to ${cyan}[$2]${normal}"
     else
-        log_info "file already exists ${cyan}[$2]${normal}"
         return 1
     fi
 }
@@ -128,8 +124,13 @@ dots() {
 
             # source the script
             . $script
+
+            log_info "finished ${cyan}[$script]${normal}"
         fi
     done
+
+    # return success
+    return 0 
 }
 
 
@@ -159,9 +160,6 @@ common.install.fonts() {
         sudo chown -R root:root /usr/share/fonts/common
         sudo fc-cache -f -v >> /dev/null
         echo "fonts successfully installed at: [/usr/share/fonts/common]"
-        
-    else
-        echo "fonts already installed at: [/usr/share/fonts/common]"
     fi
 
     echo -e ":: finished common fonts\n"

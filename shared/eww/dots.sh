@@ -4,8 +4,8 @@
 dir=$(dirname ${BASH_SOURCE[0]})
 
 # check if package is installed
-if is_arch ; then 
-    arch_install_eww
+if is_arch ; then
+    is_installed eww
 else
     is_installed eww
 fi

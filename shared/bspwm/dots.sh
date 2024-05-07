@@ -6,20 +6,22 @@ dir=$(dirname ${BASH_SOURCE[0]})
 # check if packages are installed
 if is_arch ; then 
     arch_install bspwm
-    arch_install bspc
     arch_install sxhkd
     arch_install xclip
     arch_install xdo
     arch_install numlockx
-    arch_install xinput xorg-xinput
+    arch_install xorg-xinput
+    arch_install feh
+    arch_install xorg-xrandr
 else
     is_installed bspwm
-    is_installed bspc
     is_installed sxhkd
     is_installed xclip
     is_installed xdo
     is_installed numlockx
-    is_installed xinput xorg-xinput
+    is_installed xinput
+    is_installed feh
+    is_installed xrandr
 fi
 
 # symlink
