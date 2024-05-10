@@ -13,15 +13,19 @@ format = '([\[$all_status$ahead_behind\] ]($style))'
 
 [rlang]
 format = '[::](bold) [󰟔 $version ]($style)'
+version_format = "${raw}"
 
 [java]
 format = '[::](bold) [ $version ]($style)'
+version_format = "${raw}"
 
 [package]
 format = '[::](bold) [󰏗 $version ]($style)'
+version_format = "${raw}"
 
 [gradle]
 format = '[::](bold) [ $version ]($style)'
+version_format = "${raw}"
 
 [character]
 success_symbol = "[>_](bold green)"

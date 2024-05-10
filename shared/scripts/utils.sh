@@ -72,7 +72,7 @@ symlink() {
     fi
 
     # stop if symlink already exists
-    if [[ -e $2 && $(readlink -f $2) == $(realpath -s $1) ]] ; then
+    if [[ -e $2 && $(readlink -f $2) == $(readlink -f $1) ]] ; then
         return 0
     fi 
 
@@ -81,7 +81,7 @@ symlink() {
 
     # remove file / folder and create symlink
     rm -r $2
-    ln -s $(realpath -s $1) $2
+    ln -s $(readlink -f $1) $2
     
     log_info "symlink created from ${cyan}[$1]${normal} to ${cyan}[$2]${normal}"
 }
