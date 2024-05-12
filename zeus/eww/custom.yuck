@@ -69,7 +69,7 @@
     (disk_usage)
     
     (separator)
-    (network_usage :param "wlan0") ; wlp2s0    (separator)
+    (network_usage :param "wlp38s0") ; wlp2s0    (separator)
     
     (separator)
     (layout)
