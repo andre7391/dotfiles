@@ -45,13 +45,21 @@ log_error() {
 ########################################
 is_installed() {
 
+    # vars
+    local packages=$@
+    local return=0
 
-    if ! [[ -x "$(command -v $1)" ]] ; then
-        # log error
-        log_error "package ${pink}[$1]${normal} is not installed"
+    for package in ${packages[@]} ; do
+        if ! [[ -x "$(command -v $package)" ]] ; then
+            
+            # log error
+            log_error "package ${pink}[$package]${normal} is not installed"
 
-        return 1
-    fi
+            return=1
+        fi
+    done
+
+    return $return
 }
 
 

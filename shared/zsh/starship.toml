@@ -27,6 +27,12 @@ version_format = "${raw}"
 format = '[::](bold) [ $version ]($style)'
 version_format = "${raw}"
 
+[rust]
+format = '[::](bold) [ $version ]($style)'
+
+[nodejs]
+format = '[::](bold) [ $version ]($style)'
+
 [character]
 success_symbol = "[>_](bold green)"
 error_symbol = "[>_](bold red)"

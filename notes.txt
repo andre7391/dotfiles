@@ -1,0 +1,4 @@
+useradd -m others
+passwd others
+usermod -aG wheel,audio,video,storage team
+useradd -m -G wheel -s /usr/bin/zsh others

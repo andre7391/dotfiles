@@ -22,22 +22,31 @@ is_arch() {
 #   $2 - (Optional) Package name at arch/aur repository
 ########################################
 arch_install () {
-    local package=$1
+
+    # vars
+    local packages=$@
+    local install_packages
 
     # list installed packages and groups
     if [[ ! $arch_packages ]] ; then
         arch_packages=($(pacman -Q | awk '{print $1}' | sort | uniq ))
         arch_groups=($(pacman -Qg | awk '{print $1}' | sort | uniq ))
     fi
-    
+
+    # check if any package isn`t installed
+    for package in ${packages[@]} ; do
+        if ! [[ " ${arch_packages[@]} " =~ " $package " || " ${arch_groups[@]} " =~ " $package " ]] ; then
+            install_packages=true
+        fi
+    done
+
     # check if its already installed
-    if ! [[ " ${arch_packages[@]} " =~ " $package " || " ${arch_groups[@]} " =~ " $package " ]] ; then
-            echo $package
+    if [[ $install_packages ]] ; then
+        
+        # install packages
+        yay -S --needed --noconfirm $packages
 
-        # install the package
-        yay -S --needed --noconfirm $package
-
-        log_info "package installed successfully ${cyan}[$package]${normal}"
+        log_info "packages installed successfully ${cyan}[$packages]${normal}"
     fi
 }
 
