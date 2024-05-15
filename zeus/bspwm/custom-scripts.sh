@@ -11,8 +11,8 @@ bspwm_configure_display() {
 
     xrandr --auto
 
-    if [[ "$current" = *"DP-1 connected"* ]]; then
-        xrandr --output DP-1 --primary --mode 1920x1080 --rate 164.97
+    if [[ "$current" = *"DisplayPort-0 connected"* ]]; then
+        xrandr --output DisplayPort-0 --primary --mode 1920x1080 --rate 164.97
     fi
 }
 
