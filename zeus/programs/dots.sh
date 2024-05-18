@@ -7,7 +7,7 @@ dir=$(dirname ${BASH_SOURCE[0]})
 arch_install visual-studio-code-bin rust nodejs
 
 # programs
-arch_install firefox plex-media-server vlc qbittorrent
+arch_install firefox plex-media-server vlc qbittorrent gimp
 
 # utilities
 arch_install bottom

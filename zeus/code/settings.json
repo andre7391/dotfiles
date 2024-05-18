@@ -2,7 +2,6 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Catppuccin Macchiato",
     "explorer.compactFolders": false,
-    "git.repositoryScanMaxDepth": 2,
     "editor.fontFamily": "'UbuntuMono Nerd Font Mono'",
     "terminal.integrated.fontSize": 15,
     "editor.fontSize": 15,
