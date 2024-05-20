@@ -3,20 +3,17 @@
 # current directory
 dir=$(dirname ${BASH_SOURCE[0]})
 
-# check if packages are installed
+# install necessary packages
 if is_arch ; then 
-    arch_install bspwm sxhkd xorg-xinput xorg-xrandr
-    arch_install xclip xdo numlockx feh flameshot 
+    install bspwm sxhkd xorg-xinput xorg-xrandr xclip xdo numlockx feh flameshot 
 else
-    is_installed bspwm sxhkd xinput xrandr
-    is_installed xclip xdo numlockx feh flameshot
+    is_installed bspwm sxhkd xinput xrandr xclip xdo numlockx feh flameshot 
 fi
 
 # symlink
-symlink $dir/default-bspwm.rc ~/.config/bspwm/bspwmrc
-symlink $dir/default-bspwm.rc ~/.config/bspwm/default-bspwm.rc
-symlink $dir/default-sxhkd.rc ~/.config/bspwm/default-sxhkd.rc
-symlink $dir/default-scripts.sh ~/.config/bspwm/default-scripts.sh
-symlink $dir/default-xinit.rc ~/.xinitrc
+symlink $dir/configs/bspwmrc ~/.config/bspwm/bspwmrc
+symlink $dir/configs/sxhkdrc ~/.config/bspwm/sxhkdrc
+symlink $dir/configs/xinitrc ~/.xinitrc
+symlink $dir/scripts/default.sh ~/.config/bspwm/scripts/default.sh
 
 

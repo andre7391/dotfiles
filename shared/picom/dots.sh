@@ -3,12 +3,8 @@
 # current directory
 dir=$(dirname ${BASH_SOURCE[0]})
 
-# check if package is installed
-if is_arch ; then 
-    arch_install picom
-else
-    is_installed picom
-fi
+# install necessary packages
+install picom
 
 # symlink
-symlink $dir/default.conf ~/.config/picom/picom.conf
+symlink $dir/picom.conf ~/.config/picom/picom.conf

@@ -3,13 +3,9 @@
 # current directory
 dir=$(dirname ${BASH_SOURCE[0]})
 
-# check if package is installed
-if is_arch ; then 
-    arch_install kitty
-else
-    is_installed kitty
-fi
+# install necessary packages
+install kitty
 
 # symlink configs
-symlink $dir/default.conf ~/.config/kitty/kitty.conf
+symlink $dir/kitty.conf ~/.config/kitty/kitty.conf
 

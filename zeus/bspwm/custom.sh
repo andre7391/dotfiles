@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
 ########################################
-# Function to configure display using xrandr
-#
-# Arguments:
-#   None
+# Configure display using xrandr
 ########################################
-bspwm_configure_display() {
+configure_display() {
     current=$(xrandr --current)
 
     xrandr --auto
@@ -17,33 +14,26 @@ bspwm_configure_display() {
 }
 
 ########################################
-# Function to configure mouse using xinput
-#
-# Arguments:
-#   None
+# Configure mouse using xinput
 ########################################
-bspwm_configure_mouse() {
+configure_mouse() {
     xinput set-prop pointer:"Logitech G603" "libinput Accel Profile Enabled" 0 1 0
 }
 
 ########################################
-# Function to configure mouse using xinput
-#
-# Arguments:
-#   None
+# Start udiskie
 ########################################
-bspwm_udiskie() {
+start_udiskie() {
+    pkill udiskie
     udiskie
 }
 
 ########################################
 # Run startup programs
-#
-# Arguments:
-#   None
 ########################################
-bspwm_custom_startup() {
-    bspwm_configure_display &
-    bspwm_configure_mouse &
-    bspwm_udiskie &
+startup() {
+    default_startup &
+    configure_display &
+    configure_mouse &
+    start_udiskie &
 }

@@ -65,7 +65,7 @@ super + r
 
 # change theme
 super + o
-	. ~/.config/bspwm/default-scripts.sh && bspwm_change_theme
+	. ~/.config/bspwm/scripts/default.sh && change_theme
 
 # printscreen
 Print

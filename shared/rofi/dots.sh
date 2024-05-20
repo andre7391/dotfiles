@@ -3,12 +3,8 @@
 # current directory
 dir=$(dirname ${BASH_SOURCE[0]})
 
-# check if package is installed
-if is_arch ; then 
-    arch_install rofi
-else
-    is_installed rofi
-fi
+# install necessary packages
+install rofi
 
 # symlink
-symlink $dir/default.rasi ~/.config/rofi/config.rasi
+symlink $dir/config.rasi ~/.config/rofi/config.rasi

@@ -1,3 +1,4 @@
+(include "custom.yuck")
 
 ;; separator
 (defwidget separator [?visible]
@@ -51,8 +52,8 @@
 (defwidget audio-output []
   (eventbox
     :cursor "pointer"
-    :onscroll "./default.sh set_output_audio_volume {}"
-    :onclick "./default.sh toggle_output_audio_mute"
+    :onscroll "./scripts/default.sh set_output_audio_volume {}"
+    :onclick "./scripts/default.sh toggle_output_audio_mute"
     (box
       :space-evenly false
       (label
@@ -70,18 +71,18 @@
   )
 )
 (deflisten audio-output-volume
-  "./default.sh subscribe_output_audio_volume"
+  "./scripts/default.sh subscribe_output_audio_volume"
 )
 (deflisten audio-output-icon
-  "./default.sh subscribe_output_audio_icon"
+  "./scripts/default.sh subscribe_output_audio_icon"
 )
 
 ;; audio-input
 (defwidget audio-input []
   (eventbox
     :cursor "pointer"
-    :onscroll "./default.sh set_input_audio_volume {}"
-    :onclick "./default.sh toggle_input_audio_mute"
+    :onscroll "./scripts/default.sh set_input_audio_volume {}"
+    :onclick "./scripts/default.sh toggle_input_audio_mute"
     (box
       :space-evenly false
       (label
@@ -99,10 +100,10 @@
   )
 )
 (deflisten audio-input-volume
-  "./default.sh subscribe_input_audio_volume"
+  "./scripts/default.sh subscribe_input_audio_volume"
 )
 (deflisten audio-input-icon
-  "./default.sh subscribe_input_audio_icon"
+  "./scripts/default.sh subscribe_input_audio_icon"
 )
 
 ;; wifi
@@ -123,7 +124,7 @@
 )
 (defpoll wifi-text
   :interval "5s"
-  "./default.sh wifi_name"
+  "./scripts/default.sh wifi_name"
 )
 
 
@@ -134,7 +135,7 @@
   )
 )
 (deflisten workspace
-  "./default.sh watch_bspwm_workspaces"
+  "./scripts/default.sh watch_bspwm_workspaces"
 )
 
 ;; layout
@@ -152,7 +153,7 @@
   )
 )
 (deflisten layout
-  "./default.sh watch_bspwm_layout"
+  "./scripts/default.sh watch_bspwm_layout"
 )
 
 ;; memory usage

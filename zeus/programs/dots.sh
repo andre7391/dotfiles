@@ -4,10 +4,13 @@
 dir=$(dirname ${BASH_SOURCE[0]})
 
 # development
-arch_install visual-studio-code-bin rust nodejs
+install rust nodejs
 
 # programs
-arch_install firefox plex-media-server vlc qbittorrent gimp
+install firefox plex-media-server vlc qbittorrent gimp
 
 # utilities
-arch_install bottom
+install bottom
+
+# steam
+install steam ttf-liberation

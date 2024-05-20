@@ -4,16 +4,19 @@
 dir=$(dirname ${BASH_SOURCE[0]})
 
 # system packages
-arch_install xorg xorg-xinit mkinitcpio-firmware
+install xorg xorg-xinit mkinitcpio-firmware amd-ucode
 
-# cpu
-arch_install amd-ucode
+# gpu drivers
+install mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver xf86-video-amdgpu
 
-# gpu
-arch_install mesa xf86-video-amdgpu vulkan-radeon libva-mesa-driver
+# audio packages
+install pipewire pipewire-pulse pipewire-alsa wireplumber
 
+# enable audio services
+systemctl --user enable pipewire pipewire-pulse wireplumber
+systemctl --user start pipewire pipewire-pulse wireplumber
 
-# configs
-copy_to_root $dir/pacman.conf /etc/pacman.conf
-copy_to_root $dir/makepkg.conf /etc/makepkg.conf
-copy_to_root $dir/mkinitcpio.conf /etc/mkinitcpio.conf
+# arch configs
+copy_to_root $dir/configs/pacman.conf /etc/pacman.conf
+copy_to_root $dir/configs/makepkg.conf /etc/makepkg.conf
+copy_to_root $dir/configs/mkinitcpio.conf /etc/mkinitcpio.conf

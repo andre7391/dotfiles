@@ -1,7 +1,3 @@
-
-;; import default config
-(include "default.yuck")
-
 ;; bar-window
 (defwindow bar-window
   ; :monitor "<primary>"
