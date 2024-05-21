@@ -67,6 +67,10 @@ super + r
 super + o
 	. ~/.config/bspwm/scripts/default.sh && change_theme
 
+# toggle_display
+super + p
+	. ~/.config/bspwm/scripts/custom.sh && configure_display
+
 # printscreen
 Print
 	flameshot gui --clipboard

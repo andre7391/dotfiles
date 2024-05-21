@@ -5,9 +5,9 @@ dir=$(dirname ${BASH_SOURCE[0]})
 
 # install necessary packages
 if is_arch ; then 
-    install bspwm sxhkd xorg-xinput xorg-xrandr xclip xdo numlockx feh flameshot 
+    install bspwm sxhkd xorg-xinput xorg-xrandr xdo numlockx feh flameshot 
 else
-    is_installed bspwm sxhkd xinput xrandr xclip xdo numlockx feh flameshot 
+    is_installed bspwm sxhkd xinput xrandr xdo numlockx feh flameshot 
 fi
 
 # symlink
