@@ -31,3 +31,4 @@ dots zeus/eww
 dots zeus/mouse
 dots zeus/udisks2
 dots zeus/programs
+dots zeus/vscode
