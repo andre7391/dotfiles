@@ -15,4 +15,4 @@ xprop -root -f _NET_WM_NAME 8s -set _NET_WM_NAME "LG3D"
 xsetroot -cursor_name left_ptr
 
 # start bspwm
-exec bspwm
+exec dbus-run-session bspwm
