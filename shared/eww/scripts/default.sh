@@ -225,10 +225,26 @@ subscribe_input_audio_volume() {
 }
 
 ########################################
-# Function to wifi name
+# Function to get wifi name
 ########################################
 wifi_name() {
     echo "$(nmcli | grep "^wl" | awk 'sub(/.*connected to /,"") {print $1}')"
+}
+
+
+########################################
+# Function to count tray icons
+########################################
+system_tray_count() {
+    count=0
+    dbus-monitor --session "interface='org.kde.StatusNotifierWatcher'" | while read -r signal; do
+        if [[ $signal == *"StatusNotifierItemRegistered"* ]]; then
+        count=$(($count + 1))
+        elif [[ $signal == *"StatusNotifierItemUnregistered"* ]] then
+        count=$(($count - 1))
+        fi
+        echo $count
+    done
 }
 
 

@@ -3,7 +3,7 @@
 ;; separator
 (defwidget separator [?visible]
   (label
-    :visible {visible}
+    :visible {visible != false}
     :class "separator"
     :text "|"
   )
@@ -13,7 +13,7 @@
 (defwidget spacer [?visible]
   (label
     :class "spacer"
-    :visible {visible}
+    :visible {visible != false}
   )
 )
 
@@ -223,7 +223,7 @@
   )
 )
 
-
+;; power icon
 (defwidget power [icon]
   (box
     :space-evenly false
@@ -233,6 +233,24 @@
     )
   )
 )
+
+; ;; system_tray
+; (defwidget system_tray []
+;   (box
+;     :space-evenly false
+;     (systray
+;       :icon-size 14
+;       :spacing 6
+;     )
+;     (label
+;       :class "icon"
+;       :text {system_tray_count}
+;     )
+;   )
+; )
+; (deflisten system_tray_count
+;   "./scripts/default.sh system_tray_count"
+; )
 
 
 

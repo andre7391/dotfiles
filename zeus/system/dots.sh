@@ -9,6 +9,13 @@ install xorg xorg-xinit mkinitcpio-firmware amd-ucode
 # gpu drivers
 install mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver xf86-video-amdgpu
 
+# bluetooth
+install bluez bluez-utils
+
+# enable bluetooth service
+systemctl enable bluetooth
+systemctl start bluetooth
+
 # audio packages
 install pipewire pipewire-pulse pipewire-alsa wireplumber
 

@@ -36,6 +36,9 @@
       
     (separator)
     (date)
+
+    ; (separator)
+    ; (system_tray)
     
     (spacer)(spacer)(spacer)
   )
