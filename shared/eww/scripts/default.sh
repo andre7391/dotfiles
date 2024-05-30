@@ -235,17 +235,17 @@ wifi_name() {
 ########################################
 # Function to count tray icons
 ########################################
-system_tray_count() {
-    count=0
-    dbus-monitor --session "interface='org.kde.StatusNotifierWatcher'" | while read -r signal; do
-        if [[ $signal == *"StatusNotifierItemRegistered"* ]]; then
-        count=$(($count + 1))
-        elif [[ $signal == *"StatusNotifierItemUnregistered"* ]] then
-        count=$(($count - 1))
-        fi
-        echo $count
-    done
-}
+# system_tray_count() {
+#     count=0
+#     dbus-monitor --session "interface='org.kde.StatusNotifierWatcher'" | while read -r signal; do
+#         if [[ $signal == *"StatusNotifierItemRegistered"* ]]; then
+#         count=$(($count + 1))
+#         elif [[ $signal == *"StatusNotifierItemUnregistered"* ]] then
+#         count=$(($count - 1))
+#         fi
+#         echo $count
+#     done
+# }
 
 
 "$@"

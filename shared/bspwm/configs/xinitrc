@@ -8,8 +8,7 @@ systemctl --user import-environment DISPLAY XAUTHORITY
 dbus-update-activation-environment DISPLAY XAUTHORITY
 
 # java desktop workaround 
-xprop -root -remove _NET_WM_NAME
-xprop -root -f _NET_WM_NAME 8s -set _NET_WM_NAME "LG3D"
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # default cursor
 xsetroot -cursor_name left_ptr
