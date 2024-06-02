@@ -10,7 +10,7 @@ install rust nodejs
 install firefox plex-media-server vlc qbittorrent gimp spotify-launcher
 
 # utilities
-install bottom piper bottom
+install bottom piper bottom pavucontrol
 
 # steam
 install steam ttf-liberation

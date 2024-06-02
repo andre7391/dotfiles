@@ -25,10 +25,11 @@ dots shared/gtk
 
 banner "Zeus"
 dots zeus/system
+dots zeus/udisks2
 dots zeus/ssh
 dots zeus/bspwm
 dots zeus/eww
 dots zeus/mouse
-dots zeus/udisks2
 dots zeus/programs
 dots zeus/vscode
+dots zeus/rlang
