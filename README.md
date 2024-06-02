@@ -31,6 +31,7 @@ mkdir /mnt/home
 mount -o subvol=home,compress-force=zstd,noatime /dev/mapper/enc /mnt/home
 mkdir /mnt/var
 mount -o subvol=var,compress-force=zstd,noatime /dev/mapper/enc /mnt/var
+swap
 
 mkdir /mnt/nix
 mount -o subvol=nix,compress=zstd,noatime /dev/mapper/enc /mnt/nix
@@ -43,7 +44,7 @@ iwctl --passphrase passphrase station name connect SSID
 mount /dev/root_partition /mnt
 mount --mkdir /dev/efi_system_partition /mnt/boot
 # pacstrap /mnt base linux linux-firmware vim nano
-pacstrap -K /mnt base linux linux-firmware sudo vim networkmanager grub efibootmgr
+pacstrap -K /mnt base linux linux-firmware sudo vim networkmanager grub efibootmgr git base-devel zsh
 genfstab -U /mnt >> /mnt/etc/fstab
 
 
@@ -52,6 +53,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 arch-chroot /mnt
 
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 
 # users
 useradd -m -G wheel -s /usr/bin/zsh andre

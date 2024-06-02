@@ -7,10 +7,15 @@ dir=$(dirname ${BASH_SOURCE[0]})
 install rust nodejs
 
 # programs
-install firefox plex-media-server vlc qbittorrent gimp spotify-launcher
+install firefox plex-media-server vlc qbittorrent gimp spotify
 
 # utilities
 install bottom piper bottom pavucontrol
 
 # steam
 install steam ttf-liberation
+
+
+# plex
+sudo systemctl enable plexmediaserver
+sudo systemctl start plexmediaserver
