@@ -4,9 +4,12 @@
 if ! is_installed --quiet eww ; then
     # subshell 
     (
-        rm -rf /tmp/eww 2> /dev/null
-        git clone https://github.com/elkowar/eww.git /tmp/eww
-        cd /tmp/eww
+        cache_dir=~/.cache/zdots/eww
+        if ! [[ -d $cache_dir ]] ; then
+            git clone https://github.com/elkowar/eww.git $cache_dir
+        fi
+        cd $cache_dir
+        git pull
         cargo build --release --no-default-features --features x11
         sudo cp -f ./target/release/eww /usr/local/bin
         log_info "packages installed successfully ${cyan}[eww]${normal}"

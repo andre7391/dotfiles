@@ -4,9 +4,12 @@
 if ! is_installed --quiet wallust ; then
     # subshell 
     (
-        rm -rf /tmp/wallust 2> /dev/null
-        git clone https://codeberg.org/explosion-mental/wallust.git /tmp/wallust
-        cd /tmp/wallust
+        cache_dir=~/.cache/zdots/wallust
+        if ! [[ -d $cache_dir ]] ; then
+            git clone https://codeberg.org/explosion-mental/wallust.git $cache_dir
+        fi
+        cd $cache_dir
+        git pull
         git checkout dev
         cargo build --release
         sudo cp -f ./target/release/wallust /usr/local/bin
