@@ -11,4 +11,3 @@ fi
 # symlink
 symlink $dir/configs/starship.toml ~/.config/starship.toml
 symlink $dir/configs/zshrc ~/.zshrc
-symlink $dir/configs/zshenv ~/.zshenv

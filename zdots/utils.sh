@@ -55,7 +55,8 @@ zdots() {
     for script in ${scripts[@]} ; do
         # source the script
         (
-            parse_vars $script
+            file=$script
+            dir=$(dirname $script)
             . $script
         )
         log_info "finished ${cyan}[$script]${normal}"
@@ -63,17 +64,6 @@ zdots() {
 
     # return success
     return 0 
-}
-
-########################################
-# Parse variables used by zdots
-#
-# Arguments:
-#   $1 - Zsh script path
-########################################
-parse_vars() {
-    file=$1
-    dir=$(dirname $1)
 }
 
 ########################################
