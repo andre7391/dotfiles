@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+# xresources
+xrdb -merge "$HOME/.Xresources"
+
+# dbus environment
+systemctl --user import-environment DISPLAY XAUTHORITY
+dbus-update-activation-environment DISPLAY XAUTHORITY
+
+# java desktop workaround 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# default cursor
+xsetroot -cursor_name left_ptr
+
+# start bspwm
+exec dbus-run-session bspwm

@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# imports
+. ~/.config/bspwm/scripts/default.sh
+. ~/.config/bspwm/scripts/custom.sh
+
+# run startup functions
+startup
