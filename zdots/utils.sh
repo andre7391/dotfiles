@@ -206,8 +206,8 @@ clean_symlinks() {
     # list and remove all broken symlinks
     local broken_symlinks=($(find ~ -xtype l | grep -v .mozilla))
     for symlink in ${broken_symlinks[@]} ; do
+        log_info "removed broken symlink ${pink}[$symlink]${normal} targeting ${pink}[$(readlink $symlink)]${normal}"
         rm $symlink
-        log_info "removed broken symlink ${pink}[$symlink]${normal} targeting ${pink}[$(realpath $symlink)]${normal}"
     done
 
     # list all symlinks targeting dotfiles directory
@@ -219,8 +219,8 @@ clean_symlinks() {
     # remove all symlinks that weren't created by this execution
     for symlink in ${dotfiles_symlinks[@]} ; do
         if ! [[ " ${created_symlinks[@]} " =~ " $symlink " ]] ; then
+            log_info "removed unused symlink ${pink}[$symlink]${normal} targeting ${pink}[$(readlink $symlink)]${normal}"
             rm $symlink
-            log_info "removed unused symlink ${pink}[$symlink]${normal} targeting ${pink}[$(realpath $symlink)]${normal}"
         fi 
     done
 
