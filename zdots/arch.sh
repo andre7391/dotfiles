@@ -1,32 +1,23 @@
 #!/usr/bin/env zsh
 
-# declare global variables
-typeset -A arch_packages
-typeset -a installed_packages
-
 ########################################
-# Load variables used by arch scripts
+# Declare global variables / cache files
 #
 # Arguments:
 #   None
 ########################################
-load_vars() {
 
-    # packages names for arch installation
-    arch_packages=( 
-        [bspwm]=bspwm-git
-        [sxhkd]=sxhkd-git
-        [xinit]=xorg-xinit
-        [xinput]=xorg-xinput
-        [xrandr]=xorg-xrandr 
-    )
+# associative array to translate arch pakcages names
+typeset -A arch_packages=( 
+    [bspwm]=bspwm-git
+    [sxhkd]=sxhkd-git
+    [xinit]=xorg-xinit
+    [xinput]=xorg-xinput
+    [xrandr]=xorg-xrandr 
+)
 
-    # installed packages and groups
-    installed_packages=($( { pacman -Q ; pacman -Qg ; } | awk '{print $1}' | sort | uniq ))
-}
-
-# load vars
-load_vars
+# list with all installed arch packages
+typeset -a installed_packages=($( { pacman -Q ; pacman -Qg ; } | awk '{print $1}' | sort | uniq ))
 
 
 ########################################

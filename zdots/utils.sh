@@ -1,14 +1,38 @@
 #!/usr/bin/env zsh
 
-# styles
-bold=$(tput bold)
-red=$(tput setaf 1)
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
-blue=$(tput setaf 4)
-pink=$(tput setaf 5)
-cyan=$(tput setaf 6)
-normal=$(tput sgr0)
+########################################
+# Declare global variables / cache files
+#
+# Arguments:
+#   None
+#######################################
+
+# file with all executed zdots scripts
+typeset executed_zdots_file=~/.cache/zdots/executed_zdots
+mkdir -p $(dirname $executed_zdots_file)
+printf "" > $executed_zdots_file
+
+# file with all symlinks created by symlink utility
+typeset created_symlinks_file=~/.cache/zdots/created_symlinks
+mkdir -p $(dirname $created_symlinks_file)
+printf "" > $created_symlinks_file
+
+
+########################################
+# Global variables used to style logs
+#
+# Arguments:
+#   None
+#######################################
+typeset bold=$(tput bold)
+typeset red=$(tput setaf 1)
+typeset green=$(tput setaf 2)
+typeset yellow=$(tput setaf 3)
+typeset blue=$(tput setaf 4)
+typeset pink=$(tput setaf 5)
+typeset cyan=$(tput setaf 6)
+typeset normal=$(tput sgr0)
+
 
 ########################################
 # Show a banner
@@ -53,13 +77,17 @@ zdots() {
     local scripts=($(find $1/* -name zdot.sh -type f))
 
     for script in ${scripts[@]} ; do
-        # source the script
-        (
-            file=$script
-            dir=$(dirname $script)
-            . $script
-        )
-        log_info "finished ${cyan}[$script]${normal}"
+        # source the script if it wasn't already executed
+        local executed_zdots=($(cat $executed_zdots_file))
+        if ! [[ " ${executed_zdots[@]} " =~ " $script " ]] ; then
+            (
+                file=$script
+                dir=$(dirname $script)
+                . $script
+            )
+            log_info "finished ${cyan}[$script]${normal}"
+            printf "%s\n" "$script" >> $executed_zdots_file
+        fi
     done
 
     # return success
@@ -143,8 +171,11 @@ symlink() {
         return 1
     fi
 
+    # add destination to list of symlinks created
+    printf "%s\n" "$(realpath --no-symlinks $2)" >> $created_symlinks_file
+
     # stop if symlink already exists
-    if [[ -e $2 && $(readlink -f $2) == $(readlink -f $1) ]] ; then
+    if [[ -e $2 && $(realpath $2) == $(realpath $1) ]] ; then
         return 0
     fi 
 
@@ -153,9 +184,47 @@ symlink() {
 
     # remove file / folder and create symlink
     rm -r $2
-    ln -s $(readlink -f $1) $2
+    ln -s $(realpath $1) $2
     
+ 
+
     log_info "symlink created from ${cyan}[$1]${normal} to ${cyan}[$2]${normal}"
+}
+
+
+########################################
+# Helper to remove broken / unused symlink files at home
+#
+# Arguments:
+#   $1 - Dotfiles folder
+########################################
+clean_symlinks() {
+
+    # args
+    local dotfiles_dir=$(readlink -f $1)
+
+    # list and remove all broken symlinks
+    local broken_symlinks=($(find ~ -xtype l | grep -v .mozilla))
+    for symlink in ${broken_symlinks[@]} ; do
+        rm $symlink
+        log_info "removed broken symlink ${pink}[$symlink]${normal} targeting ${pink}[$(realpath $symlink)]${normal}"
+    done
+
+    # list all symlinks targeting dotfiles directory
+    local dotfiles_symlinks=($(find ~ -lname "$dotfiles_dir*"))
+
+    # list of all symlinks created by symlink function
+    local created_symlinks=($(cat $created_symlinks_file))
+
+    # remove all symlinks that weren't created by this execution
+    for symlink in ${dotfiles_symlinks[@]} ; do
+        if ! [[ " ${created_symlinks[@]} " =~ " $symlink " ]] ; then
+            rm $symlink
+            log_info "removed unused symlink ${pink}[$symlink]${normal} targeting ${pink}[$(realpath $symlink)]${normal}"
+        fi 
+    done
+
+    log_info "symlinks ${cyan}[cleaned]${normal}"
 }
 
 ########################################

@@ -11,6 +11,7 @@ dir=$(dirname $0)
 # run zdots
 banner "System"
 zdots $dir/zeus/system/pacman
+zdots $dir/zeus/system/packages
 zdots $dir/zeus/system
 
 
@@ -31,3 +32,5 @@ zdots $dir/shared/programs
 banner "Development"
 zdots $dir/zeus/development
 
+banner "Clean Symlinks"
+clean_symlinks $dir
