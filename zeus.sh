@@ -32,5 +32,7 @@ zdots $dir/shared/programs
 banner "Development"
 zdots $dir/zeus/development
 
-banner "Clean Symlinks"
+
+banner "Clean and Packages Symlinks"
 clean_symlinks $dir
+clean_packages

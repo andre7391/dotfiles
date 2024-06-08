@@ -4,7 +4,7 @@
 install firefox vlc qbittorrent gimp spotify
 
 # utilities
-install piper bottom pavucontrol rsync
+install wget p7zip git vim piper bottom pavucontrol rsync
 
 # steam
 install steam ttf-liberation

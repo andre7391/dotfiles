@@ -14,10 +14,17 @@ typeset -A arch_packages=(
     [xinit]=xorg-xinit
     [xinput]=xorg-xinput
     [xrandr]=xorg-xrandr 
+    [xsetroot]=xorg-xsetroot 
 )
 
 # list with all installed arch packages
-typeset -a installed_packages=($( { pacman -Q ; pacman -Qg ; } | awk '{print $1}' | sort | uniq ))
+typeset -a query_installed_packages=($( pacman -Qe | awk '{print $1}' | sort | uniq ))
+
+
+# file with all packages installed by current execution
+typeset current_installed_packages_file=~/.cache/zdots/current_installed_packages
+mkdir -p $(dirname $current_installed_packages_file)
+printf "" > $current_installed_packages_file
 
 
 ########################################
@@ -26,11 +33,11 @@ typeset -a installed_packages=($( { pacman -Q ; pacman -Qg ; } | awk '{print $1}
 # Arguments:
 #   $@ - List of packages to be installed
 ########################################
-install () {
+install() {
 
     # vars
     local packages=($@)
-    local install_packages=()
+    local packages_to_install=()
     
     # check packages not installed
     for package in $packages ; do
@@ -40,17 +47,45 @@ install () {
         fi
 
         # check if package is installed
-        if ! [[ " ${installed_packages[@]} " =~ " $package " ]] ; then
-            install_packages=( $install_packages $package )
+        if ! [[ " ${query_installed_packages[@]} " =~ " $package " ]] ; then
+            packages_to_install=( $packages_to_install $package )
         fi
+
+        # add to installed packages at current execution
+        printf "%s\n" $package >> $current_installed_packages_file
     done
 
     # check if install is needed
-    if [[ -n $install_packages ]] ; then
+    if [[ -n $packages_to_install ]] ; then
         
         # install packages
-        yay -S --needed --noconfirm $install_packages
+        yay -S --needed --noconfirm $packages_to_install
 
-        log_info "packages installed successfully ${cyan}[$install_packages]${normal}"
+        # mark packages as explicit installed
+        yay -D --asexplicit $packages_to_install
+
+        log_info "packages installed successfully ${cyan}[$packages_to_install]${normal}"
     fi
+}
+
+clean_packages() {
+
+    # list of all packages installed by current execution
+    local current_installed_packages=($(cat $current_installed_packages_file))
+
+    # remove all packages not explicity installed in this execution
+    for package in ${query_installed_packages[@]} ; do
+        if ! [[ " ${current_installed_packages[@]} " =~ " $package " ]] ; then
+            yay -Rus --noconfirm $package
+            log_info "removed unused package ${pink}[$package]${normal}"
+        fi 
+    done
+
+    # remove unused dependencies
+    yay -Yc --noconfirm
+
+    # clean package cache
+    # yay -Sc --noconfirm
+
+    log_info "packages ${cyan}[cleaned]${normal}"
 }
