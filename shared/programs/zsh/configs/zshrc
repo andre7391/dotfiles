@@ -1,6 +1,8 @@
 
 export PATH=$HOME/.local/bin:$PATH
 
+setopt interactive_comments
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
