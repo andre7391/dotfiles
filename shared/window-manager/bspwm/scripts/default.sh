@@ -96,7 +96,7 @@ change_theme() {
     # random wallpaper
     wallpaper=$(shuf -e -n1 ~/.config/wallpapers/*)
 
-    feh --bg-fill $wallpaper
+    feh --bg-scale $wallpaper
     wallust run -s $wallpaper
     eww reload
     xdo below -t $(xdo id -n root) $(xdo id -n eww)
