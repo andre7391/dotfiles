@@ -218,7 +218,7 @@
       :text "󱂇"
     )
     (spacer)
-    "${round(EWW_NET[param].NET_DOWN/260000 + EWW_NET[param].NET_UP/260000, 1)}M"
+      "${round(EWW_NET[param].NET_DOWN/125000 + EWW_NET[param].NET_UP/125000, 1)}M"
     ; "${EWW_NET}"
   )
 )
