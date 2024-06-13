@@ -13,6 +13,8 @@ banner "System"
 zdots $dir/zeus/system/pacman
 zdots $dir/zeus/system/packages
 zdots $dir/zeus/system
+zdots $dir/shared/system
+
 
 
 banner "Window Manager"
