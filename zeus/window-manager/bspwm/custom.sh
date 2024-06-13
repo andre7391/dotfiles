@@ -14,13 +14,6 @@ configure_display() {
 }
 
 ########################################
-# Configure mouse using xinput
-########################################
-configure_mouse() {
-    xinput set-prop pointer:"Logitech G603" "libinput Accel Profile Enabled" 0 1 0
-}
-
-########################################
 # Start udiskie
 ########################################
 start_udiskie() {
@@ -34,6 +27,5 @@ start_udiskie() {
 startup() {
     default_startup &
     configure_display &
-    configure_mouse &
     start_udiskie &
 }

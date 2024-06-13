@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
-# libinput config
-copy_to_root $dir/libinput.conf /usr/share/X11/xorg.conf.d/40-libinput.conf
+# mouse config
+copy_to_root $dir/mouse.conf /usr/share/X11/xorg.conf.d/50-mouse.conf
