@@ -8,13 +8,13 @@ dir=$(dirname $0)
 . $dir/zdots/utils.sh
 . $dir/zdots/arch.sh
 
+
 # run zdots
 banner "System"
-zdots $dir/zeus/system/pacman
+zdots $dir/zeus/system/yay
 zdots $dir/zeus/system/packages
 zdots $dir/zeus/system
 zdots $dir/shared/system
-
 
 
 banner "Window Manager"
