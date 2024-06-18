@@ -41,8 +41,8 @@ typeset normal=$(tput sgr0)
 #   $1 - Message to be displayed in the banner
 ########################################
 banner() {
-     printf "\n\n"
-     printf "%s\n" "${bold}${green}:: ${yellow}$1 ${bold}${green}::${normal}"
+     printf "\n\n" >&2
+     printf "%s\n" "${bold}${green}:: ${yellow}$1 ${bold}${green}::${normal}" >&2
 }
 
 ########################################
@@ -52,7 +52,7 @@ banner() {
 #   $1 - Message to be displayed
 ########################################
 log_info() {
-    printf "%s\n" " ${bold}${blue}$file ${green}::${normal} $1"
+    printf "%s\n" " ${bold}${blue}$file ${green}::${normal} $1" >&2
 }
 
 ########################################
@@ -62,7 +62,7 @@ log_info() {
 #   $1 - Message to be displayed
 ########################################
 log_error() {
-    printf "%s\n" " ${bold}${red}$file ${green}::${normal} $1"
+    printf "%s\n" " ${bold}${red}$file ${green}::${normal} $1" >&2
 }
 
 ########################################

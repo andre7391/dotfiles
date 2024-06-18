@@ -127,7 +127,7 @@ random_wallpaper() {
 
     # md5sum to check if wallpapers changed
     old_md5sum=$(<$wallpapers_cache/md5sum)
-    new_md5sum=$(find -L ~/.config/wallpapers | sort | md5sum)
+    new_md5sum=$(find -L ~/.config/wallpapers -type f | sort | md5sum)
 
     # current wallpaper
     current=$(<$wallpapers_cache/current)
@@ -140,7 +140,7 @@ random_wallpaper() {
 
     # if empty, equals current or md5 changed, shuffle again and get first
     if [[ -z $wallpaper ]] || [[ $new_md5sum != $old_md5sum ]] || [[ $current == $wallpaper ]] ; then
-        shuf -e ~/.config/wallpapers/* > $wallpapers_cache/shuffle
+        find -L ~/.config/wallpapers -type f | shuf > $wallpapers_cache/shuffle
         printf "%s" "$new_md5sum" > $wallpapers_cache/md5sum
         wallpaper=$(cat $wallpapers_cache/shuffle | head -n1)
     fi
