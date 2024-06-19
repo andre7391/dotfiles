@@ -35,6 +35,10 @@ banner "Development"
 zdots $dir/zeus/development
 
 
+banner "Gaming"
+zdots $dir/zeus/gaming
+
+
 banner "Clean and Packages Symlinks"
 clean_symlinks $dir
 clean_packages

@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
 # system
-install linux linux-firmware base base-devel sudo grub efibootmgr rust mkinitcpio-firmware amd-ucode
+install linux linux-firmware base base-devel sudo rust mkinitcpio-firmware amd-ucode
 
 # btrfs
-install btrfs-progs compsize
+install btrfs-progs
 
 # xorg
 install xorg-server
