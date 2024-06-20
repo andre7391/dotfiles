@@ -44,12 +44,14 @@ iwctl --passphrase passphrase station name connect SSID
 mount /dev/root_partition /mnt
 mount --mkdir /dev/efi_system_partition /mnt/boot
 # pacstrap /mnt base linux linux-firmware vim nano
-pacstrap -K /mnt base linux linux-firmware sudo vim networkmanager grub efibootmgr git base-devel zsh
+pacstrap -K /mnt base linux linux-firmware sudo vim networkmanager git base-devel zsh
 genfstab -U /mnt >> /mnt/etc/fstab
 
+<!-- UUID=65B9-AB78      				/boot     	vfat      	rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2 -->
+bootctl install
 
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH
-grub-mkconfig -o /boot/grub/grub.cfg
+<!-- grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH
+grub-mkconfig -o /boot/grub/grub.cfg -->
 
 arch-chroot /mnt
 
