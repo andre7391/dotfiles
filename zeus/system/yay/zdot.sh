@@ -6,4 +6,4 @@ copy_to_root $dir/makepkg.conf /etc/makepkg.conf
 copy_to_root $dir/mkinitcpio.conf /etc/mkinitcpio.conf
 
 # yay
-install yay
+install yay-bin

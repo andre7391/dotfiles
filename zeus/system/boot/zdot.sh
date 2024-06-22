@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-# packges for secure boot
-# install sbctl efitools
+# enable boot service
+systemctl_enable systemd-boot-update
 
 # boot config
 copy_to_root $dir/loader.conf /boot/loader/loader.conf

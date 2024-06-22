@@ -18,6 +18,7 @@ zdots $dir/shared/system
 
 
 banner "Window Manager"
+zdots $dir/zeus/window-manager/eww
 zdots $dir/zeus/window-manager
 zdots $dir/shared/window-manager
 

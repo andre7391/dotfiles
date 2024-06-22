@@ -58,6 +58,9 @@ install() {
     # check if install is needed
     if [[ -n $packages_to_install ]] ; then
         
+        # update current packages 
+        yay
+        
         # install packages
         yay -S --needed --noconfirm $packages_to_install
 

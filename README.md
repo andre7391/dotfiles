@@ -55,7 +55,7 @@ grub-mkconfig -o /boot/grub/grub.cfg -->
 
 arch-chroot /mnt
 
-git clone https://aur.archlinux.org/yay.git
+git clone https://aur.archlinux.org/yay-bin.git
 cd yay
 makepkg -si
 
@@ -63,6 +63,5 @@ makepkg -si
 useradd -m -G wheel -s /usr/bin/zsh andre
 passwd
 
-sudo vim /etc/sudoers
-
+visudo
 

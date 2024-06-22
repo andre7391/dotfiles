@@ -236,7 +236,7 @@ clean_symlinks() {
 ########################################
 copy_to_root() {
     
-    if ! diff -qr $1 $2 &> /dev/null ; then
+    if ! sudo diff -qr $1 $2 &> /dev/null ; then
         sudo chattr -i $2 2> /dev/null
         sudo cp -r $1 $2
         log_info "file copied from ${cyan}[$1]${normal} to ${cyan}[$2]${normal}"
