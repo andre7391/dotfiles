@@ -204,7 +204,7 @@ clean_symlinks() {
     local dotfiles_dir=$(readlink -f $1)
 
     # list and remove all broken symlinks
-    local broken_symlinks=($(find ~ -xtype l | grep -v .mozilla))
+    local broken_symlinks=($(find ~ -xtype l | grep -v .mozilla | grep -v .local/share/Steam | grep -v .steampath))
     for symlink in ${broken_symlinks[@]} ; do
         log_info "removed broken symlink ${pink}[$symlink]${normal} targeting ${pink}[$(readlink $symlink)]${normal}"
         rm $symlink
