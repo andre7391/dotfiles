@@ -10,6 +10,6 @@ symlink $dir/unplash ~/.config/wallpapers/unplash
 #     # file $file 
 #     if [[ -f $file ]] ; then
 #         file $file
-#         magick $file -gravity center -crop 16:9 -strip -sampling-factor 4:4:4 -interlace Plane -resize x1440 -quality 95 converted/${file%%.*}.jpg
+#         # magick $file -gravity center -crop 16:9 -strip -sampling-factor 4:4:4 -unsharp 0x1 -density 300 -resize x1440 -quality 95 converted/${file%%.*}.jpg
 #     fi
 # done
