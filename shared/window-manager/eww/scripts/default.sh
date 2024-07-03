@@ -228,7 +228,13 @@ subscribe_input_audio_volume() {
 # Function to get wifi name
 ########################################
 wifi_name() {
-    iwctl station wlan0 show | grep "Connected network" | awk '{print $3}'
+    local name=$(iwctl station wlan0 show | grep "Connected network" | awk '{print $3}') 2> /dev/null
+
+    if [[ -z $name ]] ; then
+        name=$(nmcli | grep "^wl" | awk 'sub(/.*connected to /,"") {print $1}')
+    fi
+
+    echo $name
 }
 
 
