@@ -5,5 +5,6 @@
     "editor.fontFamily": "'UbuntuMono Nerd Font Mono'",
     "terminal.integrated.fontSize": 15,
     "editor.fontSize": 15,
-    "catppuccin.accentColor": "lavender"
+    "catppuccin.accentColor": "lavender",
+    "explorer.confirmDelete": false
 }
