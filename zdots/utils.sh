@@ -171,11 +171,13 @@ symlink() {
         return 1
     fi
 
-    # add destination to list of symlinks created
-    printf "%s\n" "$(realpath --no-symlinks $2)" >> $created_symlinks_file
 
     # stop if symlink already exists
     if [[ -e $2 && $(realpath $2) == $(realpath $1) ]] ; then
+
+        # add destination to list of symlinks created
+        printf "%s\n" "$(realpath --no-symlinks $2)" >> $created_symlinks_file
+
         return 0
     fi 
 
@@ -186,7 +188,9 @@ symlink() {
     rm -r $2
     ln -s $(realpath $1) $2
     
- 
+    # add destination to list of symlinks created
+    printf "%s\n" "$(realpath --no-symlinks $2)" >> $created_symlinks_file
+
 
     log_info "symlink created from ${cyan}[$1]${normal} to ${cyan}[$2]${normal}"
 }

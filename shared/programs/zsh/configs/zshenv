@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# enviromment variables
+export EDITOR=vim
+export TERM=kitty
+
+# source custom env
+. ~/.config/zsh/custom.sh
