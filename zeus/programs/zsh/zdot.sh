@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
 # symlink
-symlink $dir/zshenv ~/.zshenv
+symlink $dir/custom.sh ~/.config/zsh/custom.sh
