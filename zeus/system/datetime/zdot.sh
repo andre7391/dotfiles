@@ -8,11 +8,10 @@ if [[ $(readlink -f /etc/localtime) != $(readlink -f $timezone) ]] ; then
     log_info "timezone updated to ${cyan}[$timezone]${normal}"
 fi 
 
-
 # check if adjtime is UTC
-if ! grep -q UTC /etc/adjtime 2> /dev/null ; then
-    sudo hwclock -w
-    log_info "hwclock adjusted to ${cyan}[UTC]${normal}"
+if ! grep -q LOCAL /etc/adjtime 2> /dev/null ; then
+    sudo hwclock -wl
+    log_info "hwclock adjusted to ${cyan}[LOCAL]${normal}"
 fi
 
 # enable timesync
