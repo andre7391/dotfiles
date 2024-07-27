@@ -38,7 +38,7 @@ super + w
 
 # focus the previous / next window in the current desktop
 super + {shift,_} + e
-	bspc node -f {prev,next}.local.!hidden.window 
+	bspc node -f {prev,next}.local.!hidden.window
 
 # expand a window
 super + alt + {h,j,k,l}

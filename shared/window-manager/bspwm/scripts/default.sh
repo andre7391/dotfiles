@@ -68,6 +68,27 @@ configure_bspwm() {
     bspc config pointer_motion_interval 2ms
 }
 
+########################################
+# Function subscribing to focused windows
+#
+# Arguments:
+#   none
+########################################
+subscribe_focused() {
+
+    # trap to kill all child process
+    trap 'kill $(jobs -p)' EXIT
+
+    # kill previous subscribe
+    pkill bspc
+
+    # first print to avoid starting empty
+    bspc subscribe | while read -r _ ; do
+        bspc node last.local -l normal
+        bspc node focused -l above
+    done
+}
+
 
 ########################################
 # Function to start and configure eww
@@ -171,7 +192,7 @@ change_theme() {
     kill -SIGUSR1 $(pidof kitty) # reload kitty
 
     # reload bspwm colors
-    bspwm_colors
+    configure_colors
 
     # xsettingsd to reload gtk
     pkill xsettingsd
@@ -183,6 +204,7 @@ change_theme() {
 # Run default startup functions
 ########################################
 default_startup() {
+    subscribe_focused &
     configure_bspwm &
     configure_colors &
     configure_workspaces &
