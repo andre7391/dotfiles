@@ -1,8 +1,17 @@
 #!/usr/bin/env zsh
 
+# saves and restores original path
+if [[ -z $ORIGINAL_PATH ]] ; then
+    export ORIGINAL_PATH=$PATH
+fi
+export PATH=$ORIGINAL_PATH
+
 # enviromment variables
 export EDITOR=vim
 export TERM=kitty
+
+# add local bin to path
+export PATH=$HOME/.local/bin:$PATH
 
 # source custom env
 . ~/.config/zsh/custom.sh

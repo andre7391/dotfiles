@@ -129,16 +129,19 @@ set_output_audio_volume() {
 
     # calculate audio volume
     if [[ $1 = "up" ]]; then 
-        volume=$((volume + 5))
+        volume=$((volume + 2))
         if ((volume >= 140)); then 
             volume=140
         fi
     else 
-        volume=$((volume - 5))
+        volume=$((volume - 2))
         if ((volume <= 0)); then 
             volume=0
         fi
     fi
+
+    # round volume
+    volume=$(( volume / 2 * 2 ))
 
     pactl set-sink-volume @DEFAULT_SINK@ $volume%
 }
@@ -192,17 +195,20 @@ set_input_audio_volume() {
 
     # calculate volume
     if [ $1 = "up" ]; then 
-        volume=$((volume + 5))
+        volume=$((volume + 2))
         if ((volume >= 100)); then 
             volume=100
         fi
     else 
-        volume=$((volume - 5))
+        volume=$((volume - 2))
         if ((volume <= 0)); then 
             volume=0
         fi
     fi
 
+    # round volume
+    volume=$(( volume / 2 * 2 ))
+    
     pactl set-source-volume @DEFAULT_SOURCE@ $volume%
 }
 
