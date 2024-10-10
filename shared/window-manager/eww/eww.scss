@@ -3,8 +3,6 @@
 
 // colors
 $transparency: rgba(0,0,0,0);
-$foreground: #A9B1D6;
-
 
 // global
 $spacing: 8px;
@@ -22,7 +20,7 @@ $height: 24px;
 
 // bar
 .bar {
-  background-color: $background;
+  background-color: $background-alpha;
   margin: $gap $gap 0px $gap;
   min-height: $height;
 
@@ -62,7 +60,7 @@ $height: 24px;
   border-radius: 2px;
 
   background-color: $color8;
-  color: $color0;
+  color: $background;
 }
 
 .workspace.focused {
@@ -88,7 +86,7 @@ $height: 24px;
   border-radius: 2px;
 
   background-color: $color8;
-  color: $color0;
+  color: $background;
 }
 
 .layout.Monocle {

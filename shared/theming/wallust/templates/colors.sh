@@ -3,11 +3,6 @@ background='{{background}}'
 foreground='{{foreground}}'
 cursor='{{cursor}}'
 
-# Special
-background='{{color0}}'
-foreground='{{color15}}'
-cursor='{{color15}}'
-
 # Colors
 color0='{{color0}}'
 color1='{{color1}}'

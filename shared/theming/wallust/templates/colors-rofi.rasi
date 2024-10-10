@@ -15,6 +15,6 @@
     color13: {{color13}};
     color14: {{color14}};
     color15: {{color15}};
-    background: rgba({{color0 | rgb }},0.8);
-    foreground: {{color15}};
+    background: rgba({{background | rgb }},{{alpha / 100}});
+    foreground: {{foreground}};
 }

@@ -1,7 +1,8 @@
 // Special
-$background: rgba({{color0 | rgb }},0.8);
-$foreground: {{color15}};
-$cursor: {{color15}};
+$background-alpha: rgba({{background | rgb }},{{alpha / 100}});
+$background: {{background}};
+$foreground: {{foreground}};
+$cursor: {{cursor}};
 
 // Colors
 $color0: {{color0}};
