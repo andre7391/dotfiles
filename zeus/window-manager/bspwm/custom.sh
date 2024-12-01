@@ -18,6 +18,7 @@ configure_display() {
 ########################################
 start_udiskie() {
     pkill udiskie
+    sleep 0.5
     udiskie
 }
 

@@ -234,7 +234,7 @@ subscribe_input_audio_volume() {
 # Function to get wifi name
 ########################################
 wifi_name() {
-    local name=$(iwctl station wlan0 show | grep "Connected network" | awk '{print $3}') 2> /dev/null
+    local name=$(liwctl station wan0 show | grep "Connected network" | awk '{print $3}') 2> /dev/null
 
     if [[ -z $name ]] ; then
         name=$(nmcli | grep "^wl" | awk 'sub(/.*connected to /,"") {print $1}')
@@ -245,19 +245,14 @@ wifi_name() {
 
 
 ########################################
-# Function to count tray icons
+# Function toogle stalonetray
 ########################################
-# system_tray_count() {
-#     count=0
-#     dbus-monitor --session "interface='org.kde.StatusNotifierWatcher'" | while read -r signal; do
-#         if [[ $signal == *"StatusNotifierItemRegistered"* ]]; then
-#         count=$(($count + 1))
-#         elif [[ $signal == *"StatusNotifierItemUnregistered"* ]] then
-#         count=$(($count - 1))
-#         fi
-#         echo $count
-#     done
-# }
-
+toggle_stalonetray() {
+    if $(xwininfo -name stalonetray | grep -q IsViewable) ; then
+        xdo hide -n stalonetray
+    else
+        xdo show -n stalonetray
+    fi
+}
 
 "$@"

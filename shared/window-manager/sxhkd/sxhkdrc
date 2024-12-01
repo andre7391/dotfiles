@@ -63,11 +63,11 @@ super + r
 
 # change theme
 super + o
-	. ~/.config/bspwm/scripts/default.sh && change_theme
+	. ~/.config/wallust/utilities.sh && next_wallpaper
 
 # toggle_display
 super + p
-	. ~/.config/bspwm/scripts/custom.sh && configure_display
+	. ~/.config/display/utilities.sh && configure_display
 
 # printscreen
 Print

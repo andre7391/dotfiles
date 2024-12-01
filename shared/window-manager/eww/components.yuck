@@ -1,4 +1,3 @@
-(include "custom.yuck")
 
 ;; separator
 (defwidget separator [?visible]
@@ -52,8 +51,8 @@
 (defwidget audio-output []
   (eventbox
     :cursor "pointer"
-    :onscroll "./scripts/default.sh set_output_audio_volume {}"
-    :onclick "./scripts/default.sh toggle_output_audio_mute"
+    :onscroll "./utilities.sh set_output_audio_volume {}"
+    :onclick "./utilities.sh toggle_output_audio_mute"
     (box
       :space-evenly false
       (label
@@ -71,18 +70,18 @@
   )
 )
 (deflisten audio-output-volume
-  "./scripts/default.sh subscribe_output_audio_volume"
+  "./utilities.sh subscribe_output_audio_volume"
 )
 (deflisten audio-output-icon
-  "./scripts/default.sh subscribe_output_audio_icon"
+  "./utilities.sh subscribe_output_audio_icon"
 )
 
 ;; audio-input
 (defwidget audio-input []
   (eventbox
     :cursor "pointer"
-    :onscroll "./scripts/default.sh set_input_audio_volume {}"
-    :onclick "./scripts/default.sh toggle_input_audio_mute"
+    :onscroll "./utilities.sh set_input_audio_volume {}"
+    :onclick "./utilities.sh toggle_input_audio_mute"
     (box
       :space-evenly false
       (label
@@ -100,10 +99,10 @@
   )
 )
 (deflisten audio-input-volume
-  "./scripts/default.sh subscribe_input_audio_volume"
+  "./utilities.sh subscribe_input_audio_volume"
 )
 (deflisten audio-input-icon
-  "./scripts/default.sh subscribe_input_audio_icon"
+  "./utilities.sh subscribe_input_audio_icon"
 )
 
 ;; wifi
@@ -124,7 +123,7 @@
 )
 (defpoll wifi-text
   :interval "5s"
-  "./scripts/default.sh wifi_name"
+  "./utilities.sh wifi_name"
 )
 
 
@@ -135,7 +134,7 @@
   )
 )
 (deflisten workspace
-  "./scripts/default.sh watch_bspwm_workspaces"
+  "./utilities.sh watch_bspwm_workspaces"
 )
 
 ;; layout
@@ -153,7 +152,7 @@
   )
 )
 (deflisten layout
-  "./scripts/default.sh watch_bspwm_layout"
+  "./utilities.sh watch_bspwm_layout"
 )
 
 ;; memory usage
@@ -234,23 +233,39 @@
   )
 )
 
-;; system_tray
-(defwidget system_tray []
-  (box
-    :space-evenly false
-    (systray
-      :icon-size 14
-      :spacing 6
-    )
-    (label
-      :class "icon"
-      :text {system_tray_count}
+
+;; system tray
+(defwidget system-tray []
+  (eventbox
+    :cursor "pointer"
+    :onclick "./utilities.sh toggle_stalonetray"
+    (box
+      :space-evenly false
+      (label
+        :class "icon"
+        :text "󰍜"
+      )
     )
   )
 )
-(deflisten system_tray_count
-  "./scripts/default.sh system_tray_count"
-)
+
+; ;; system_tray
+; (defwidget system_tray []
+;   (box
+;     :space-evenly false
+;     (systray
+;       :icon-size 14
+;       :spacing 6
+;     )
+;     (label
+;       :class "icon"
+;       :text {system_tray_count}
+;     )
+;   )
+; )
+; (deflisten system_tray_count
+;   "./scripts/default.sh system_tray_count"
+; )
 
 
 

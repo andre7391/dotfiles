@@ -17,7 +17,11 @@ if ! is_installed --quiet wallust ; then
     )
 fi
 
-# wallpapers
+# symlink wallust files
 symlink $dir/wallust.toml ~/.config/wallust/wallust.toml
 symlink $dir/templates ~/.config/wallust/templates
+symlink $dir/utilities.sh ~/.config/wallust/utilities.sh
+
+# symlink autostart
+symlink $dir/autostart.sh ~/.config/bspwm/autostart/wallust.sh
 

@@ -1,12 +1,11 @@
 #!/usr/bin/env zsh
 
 # install necessary packages
-install bspwm sxhkd xinit xinput xrandr xdo xsetroot numlockx feh flameshot 
+install bspwm xinit xinput xrandr xdo xsetroot numlockx feh flameshot
 
-# symlink
-symlink $dir/configs/bspwmrc ~/.config/bspwm/bspwmrc
-symlink $dir/configs/sxhkdrc ~/.config/bspwm/sxhkdrc
-symlink $dir/configs/xinitrc ~/.xinitrc
-symlink $dir/scripts/default.sh ~/.config/bspwm/scripts/default.sh
+# symlink configs
+symlink $dir/bspwmrc ~/.config/bspwm/bspwmrc
+symlink $dir/xinitrc ~/.xinitrc
+symlink $dir/utilities.sh ~/.config/bspwm/utilities.sh
 
 

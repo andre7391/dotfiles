@@ -1,7 +1,0 @@
-#!/bin/sh
-
-text() {
-    echo "$(nmcli | grep "^wl" | awk 'sub(/.*connected to /,"") {print $1}')"
-}
-
-"$@"

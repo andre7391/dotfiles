@@ -17,6 +17,9 @@ if ! is_installed --quiet eww ; then
 fi
 
 # symlink configs
-symlink $dir/eww.yuck ~/.config/eww/eww.yuck
+symlink $dir/components.yuck ~/.config/eww/components.yuck
 symlink $dir/eww.scss ~/.config/eww/eww.scss
-symlink $dir/scripts/default.sh ~/.config/eww/scripts/default.sh
+symlink $dir/utilities.sh ~/.config/eww/utilities.sh
+
+# symlink autostart
+symlink $dir/autostart.sh ~/.config/bspwm/autostart/eww.sh

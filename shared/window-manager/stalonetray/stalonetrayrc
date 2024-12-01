@@ -1,0 +1,6 @@
+vertical true
+geometry 1x1-6+38
+grow_gravity NE
+icon_gravity NE
+slot_size 24
+window_type normal
