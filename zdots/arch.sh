@@ -79,7 +79,7 @@ clean_packages() {
     # remove all packages not explicity installed in this execution
     for package in ${query_installed_packages[@]} ; do
         if ! [[ " ${current_installed_packages[@]} " =~ " $package " ]] ; then
-            yay -Rus --noconfirm $package
+            # yay -Rus --noconfirm $package
             log_info "removed unused package ${pink}[$package]${normal}"
         fi 
     done

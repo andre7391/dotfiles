@@ -3,4 +3,4 @@ Name=wlan0
 
 [Network]
 DHCP=yes
-IgnoreCarrierLoss=3s
+#IgnoreCarrierLoss=3s
