@@ -10,5 +10,5 @@ install btrfs-progs
 install xorg-server
 
 # gpu
-install mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver xf86-video-amdgpu
+install mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon xf86-video-amdgpu
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # install necessary packages
-install bspwm xinit xinput xrandr xdo xsetroot numlockx feh flameshot
+install bspwm xinit xinput xrandr xdo xsetroot xwininfo numlockx feh flameshot
 
 # symlink configs
 symlink $dir/bspwmrc ~/.config/bspwm/bspwmrc

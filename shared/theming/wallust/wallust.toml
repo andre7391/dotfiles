@@ -74,7 +74,7 @@ alpha = 80
 
 
 [templates]
-all.template = ''
+all.template = 'templates'
 all.target = '~/.cache/wallust' 
 
 # gtk.template = 'templates/colors-gtk.css'

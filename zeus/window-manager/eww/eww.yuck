@@ -1,3 +1,5 @@
+(include "components.yuck")
+
 ;; bar-window
 (defwindow bar-window
   ; :monitor "<primary>"
@@ -37,8 +39,8 @@
     (separator)
     (date)
 
-    ; (separator)
-    ; (system_tray)
+    (separator)
+    (system-tray)
     
     (spacer)(spacer)(spacer)
   )

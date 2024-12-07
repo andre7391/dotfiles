@@ -15,6 +15,7 @@ typeset -A arch_packages=(
     [xinput]=xorg-xinput
     [xrandr]=xorg-xrandr 
     [xsetroot]=xorg-xsetroot 
+    [xwininfo]=xorg-xwininfo 
 )
 
 # list with all installed arch packages
