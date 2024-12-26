@@ -9,4 +9,4 @@ if copy_to_root $dir/locale.gen /etc/locale.gen ; then
 fi
 
 # update locale
-sudo update-locale LANGUAGE=en_US:en LANG=en_US.UTF-8
+sudo localectl set-locale LANG=en_US.UTF-8
