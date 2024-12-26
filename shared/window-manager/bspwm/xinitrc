@@ -17,4 +17,4 @@ xsetroot -cursor_name left_ptr
 xset s off -dpms
 
 # start bspwm
-exec dbus-run-session bspwm
+exec dbus-run-session -- bspwm
