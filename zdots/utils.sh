@@ -80,12 +80,12 @@ zdots() {
         # source the script if it wasn't already executed
         local executed_zdots=($(cat $executed_zdots_file))
         if ! [[ " ${executed_zdots[@]} " =~ " $script " ]] ; then
+            log_info "running ${cyan}[$script]${normal}"
             (
                 file=$script
                 dir=$(dirname $script)
                 . $script
             )
-            log_info "finished ${cyan}[$script]${normal}"
             printf "%s\n" "$script" >> $executed_zdots_file
         fi
     done

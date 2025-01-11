@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # install necessary packages
-install xsettingsd
+install gnome-themes-extra
 
 # theme
 symlink $dir/catppuccin-macchiato ~/.themes/catppuccin-macchiato
