@@ -4,8 +4,12 @@
 xrdb -merge "$HOME/.Xresources"
 
 # dbus environment
-systemctl --user import-environment DISPLAY XAUTHORITY
-dbus-update-activation-environment DISPLAY XAUTHORITY
+DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
+export DBUS_SESSION_BUS_ADDRESS
+dbus-update-activation-environment --verbose --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY 
+# dbus environment
+# systemctl --user import-environment DISPLAY XAUTHORITY
+# dbus-update-activation-environment DISPLAY XAUTHORITY
 
 # java desktop workaround 
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -14,4 +18,5 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 xsetroot -cursor_name left_ptr
 
 # start bspwm
-exec dbus-run-session -- bspwm
+# exec dbus-launch --exit-with-session bspwm
+exec bspwm
