@@ -10,6 +10,7 @@ configure_bspwm() {
     # others configs
     bspc config window_gap              4
     bspc config top_padding             32 # bar = 28 + gap
+    bspc config right_padding           0
     bspc config border_width            2
     bspc config split_ratio             0.55
     bspc config borderless_monocle      false
