@@ -4,7 +4,7 @@
 . ~/.config/bspwm/utilities.sh && configure_bspwm
 . ~/.config/bspwm/utilities.sh && configure_workspaces
 . ~/.config/bspwm/utilities.sh && configure_keyboard
-# . ~/.config/bspwm/utilities.sh && subscribe_focused
+. ~/.config/bspwm/utilities.sh && subscribe_bspc
 
 # run display configurtation
 . ~/.config/display/utilities.sh && configure_display true

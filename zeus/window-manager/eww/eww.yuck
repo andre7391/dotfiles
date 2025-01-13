@@ -20,29 +20,8 @@
   (box
     :class "bar"
     (start)
+    (middle)
     (end)
-  )
-)
-
-;; end
-(defwidget end []
-  (box
-    :halign "end"
-    :space-evenly false
-    
-    (separator)      
-    (wifi)
-
-    (separator)
-    (audio)
-      
-    (separator)
-    (date)
-
-    (separator)
-    (system-tray)
-    
-    (spacer)(spacer)(spacer)
   )
 )
 
@@ -79,5 +58,36 @@
     (workspaces)
 
     (separator)
+  )
+)
+
+;; middle
+(defwidget middle []
+  (box
+    :halign "center"
+    ; :space-evenly false
+    (window_title)
+  )
+)
+
+;; end
+(defwidget end []
+  (box
+    :halign "end"
+    :space-evenly false
+          
+    (separator)      
+    (wifi)
+
+    (separator)
+    (audio)
+      
+    (separator)
+    (date)
+
+    (separator)
+    (system-tray)
+    
+    (spacer)(spacer)(spacer)
   )
 )

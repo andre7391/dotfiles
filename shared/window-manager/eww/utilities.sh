@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
 ########################################
-# Functions to print and watch bspwm workspaces
+# Function to update workspaces
 ########################################
-print_bspwm_workspaces() {
+update_workspaces() {
     
     occupied=($(bspc query -D -d .occupied --names))
     focused=($(bspc query -D -d .focused --names))
@@ -16,7 +16,7 @@ print_bspwm_workspaces() {
     # check if layout is monocle
     is_monocle=$(bspc query -T -d | grep -q '"userLayout":"monocle"' && echo "0")
 
-    output=""
+    local output=""
 
     for workspace in ${workspaces[@]} ; do
 
@@ -45,28 +45,16 @@ print_bspwm_workspaces() {
         output="$output (eventbox :cursor \"hand\" :onclick \"bspc desktop -f $workspace\" (label :class \"$class\" :text \"$workspace_text\"))"
     done
 
-    printf '%s\n' "(box :space-evenly false :class \"workspaces\" $output)"
+    eww update workspaces_var="(box :space-evenly false :class \"workspaces\" $output)"
 }
 
-watch_bspwm_workspaces() {
-
-    # trap to kill all child process
-    trap 'kill $(jobs -p)' EXIT
-
-    # first print to avoid starting empty
-    print_bspwm_workspaces
-
-    # watch workspaces changes
-    bspc subscribe desktop node_transfer | while read -r _ ; do
-        print_bspwm_workspaces
-    done &
-    
-    # check for changes every 5 seconds
-    while true; do
-        sleep 5
-        print_bspwm_workspaces
-    done
+########################################
+# Function to update window title
+########################################
+update_window_title() {
+    eww update window_title_var="$(xprop -id $(bspc query -N -n focused) | grep _NET_WM_NAME | cut -d'"' -f2)"
 }
+
 
 ########################################
 # Function to print and watch bspwm layout

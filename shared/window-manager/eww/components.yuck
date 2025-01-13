@@ -130,12 +130,22 @@
 ;; workspaces
 (defwidget workspaces []
   (literal
-    :content workspace
+    :content workspaces_var
   )
 )
-(deflisten workspace
-  "./utilities.sh watch_bspwm_workspaces"
+(defvar workspaces_var "")
+
+;; window_title
+(defwidget window_title []
+  (box
+    :space-evenly false
+    (label
+      :limit-width 80
+      :text "${window_title_var}"
+    )
+  )
 )
+(defvar window_title_var "")
 
 ;; layout
 (defwidget layout []

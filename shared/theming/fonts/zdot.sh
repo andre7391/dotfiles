@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+install noto-fonts-emoji
+
 # symlink
 symlink $dir/dejavu-sans ~/.local/share/fonts/dejavu-sans
 symlink $dir/nerdfonts ~/.local/share/fonts/nerdfonts

@@ -57,19 +57,47 @@ configure_keyboard() {
 # Arguments:
 #   none
 ########################################
-subscribe_focused() {
-
-    # trap to kill all child process
-    trap 'kill $(jobs -p)' EXIT
+subscribe_bspc() {
 
     # kill previous subscribe
     pkill bspc
     sleep 0.1
 
-    # first print to avoid starting empty
-    bspc subscribe | while read -r _ ; do
-        bspc node last.local -l normal
-        bspc node focused -l above
+    # subscribe focus
+    bspc subscribe node_focus desktop_focus | while read -r _ ; do
+        ~/.config/eww/utilities.sh update_window_title
+    done &
+    
+    # subscribe workspaces changes
+    bspc subscribe desktop node_transfer | while read -r _ ; do
+        ~/.config/eww/utilities.sh update_workspaces
+    done &
+
+    # subscribe state changes
+    bspc subscribe node_state | while read -r _ _ _ bspc_node bspc_state bspc_status; do
+        if [[ $bspc_state == "floating" ]]; then
+            case "$bspc_status" in
+                off) 
+                    xprop -id $bspc_node -remove PICOM_SHADOW
+                    ;;
+                on) 
+                    xprop -id $bspc_node -f PICOM_SHADOW 32c -set PICOM_SHADOW 1
+                    ;;
+            esac
+        fi
+    done &
+
+    # current time
+    local bspwm_time=$(date +%s%3N)
+    
+    # save time in cache
+    mkdir -p ~/.cache/bspwm
+    printf "%s" "$bspwm_time" > ~/.cache/bspwm/time
+
+    while [[ $bspwm_time == $(<~/.cache/bspwm/time) ]]; do
+        sleep 2
+        ~/.config/eww/utilities.sh update_window_title
+        ~/.config/eww/utilities.sh update_workspaces
     done &
 }
 
@@ -87,6 +115,5 @@ autostart() {
     for script in ${scripts[@]} ; do
         # source the script
         . $script &
-        echo $script
     done
 }
