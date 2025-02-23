@@ -36,8 +36,11 @@ printf "" > $current_installed_packages_file
 ########################################
 install() {
 
+    # parse args
+    parse_args "$@"
+
     # vars
-    local packages=($@)
+    local packages=($args)
     local packages_to_install=()
     
     # check packages not installed
