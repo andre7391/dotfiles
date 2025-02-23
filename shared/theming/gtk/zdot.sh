@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # install necessary packages
-install gnome-themes-extra
+install --quiet gnome-themes-extra
 
 # theme
 symlink $dir/catppuccin-macchiato ~/.themes/catppuccin-macchiato

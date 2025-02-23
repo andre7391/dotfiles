@@ -87,6 +87,8 @@ next_wallpaper() {
 
     # reload eww colors
     eww reload
+    ~/.config/eww/utilities.sh update_workspaces
+    ~/.config/eww/utilities.sh update_window_title
     sleep 0.5
     xdo below -t $(xdo id -n root) $(xdo id -n eww)
 

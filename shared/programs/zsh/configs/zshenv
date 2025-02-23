@@ -13,5 +13,9 @@ export TERM=kitty
 # add local bin to path
 export PATH=$HOME/.local/bin:$PATH
 
-# source custom env
-. ~/.config/zsh/custom.sh
+# source custom environment scripts
+local scripts=($(find ~/.config/zsh/environment/*))
+for script in ${scripts[@]} ; do
+    # source the script
+    . $script
+done
