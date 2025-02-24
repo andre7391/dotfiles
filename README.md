@@ -65,3 +65,8 @@ passwd
 
 visudo
 
+
+sudo btrfs filesystem mkswapfile --size 8g --uuid clear /swap/swapfile
+
+#swap
+/swap/swapfile none swap defaults 0 0
