@@ -71,7 +71,7 @@ super + p
 
 # printscreen
 Print
-	flameshot gui --clipboard
+	flameshot gui
 
 # lock screen
 ctrl + alt + l

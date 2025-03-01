@@ -1,0 +1,27 @@
+{
+    "ShieldsAdvancedView": true,
+    "BraveExperimentalAdblockEnabled": true,
+
+    "HardwareAccelerationModeEnabled": true,
+    "MemorySaverEnabled": true,
+    "BackgroundModeEnabled": false,
+
+    "BraveRewardsDisabled": true,
+    "BraveVPNDisabled": true,
+    "BraveWalletDisabled": true,
+    "BraveAIChatEnabled": false,
+    "BraveRewardsIconHidden": true,
+
+    "MetricsReportingEnabled": false,
+    "CloudReportingEnabled": false,
+    "SafeBrowsingExtendedReportingEnabled": false,
+    "AutomaticallySendAnalytics": false,
+    "DnsOverHttpsMode": "automatic",
+   
+    "ShowFullURLs": true,
+    "WideAddressBar": true,
+    "BookmarksBarEnabled": true,
+
+    "TorDisabled": true,
+    "PasswordManagerEnabled": false
+}
