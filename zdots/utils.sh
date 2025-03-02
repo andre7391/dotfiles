@@ -241,6 +241,7 @@ clean_symlinks() {
 copy_to_root() {
     
     if ! sudo diff -qr $1 $2 &> /dev/null ; then
+        sudo mkdir -p $(dirname $2)
         sudo chattr -i $2 2> /dev/null
         sudo cp -r $1 $2
         log_info "file copied from ${cyan}[$1]${normal} to ${cyan}[$2]${normal}"
